@@ -51,6 +51,12 @@ pipeline {
                 sh 'mvn package -DskipTests'
             }
         }
+        stage("Login to DockerHub") {
+                steps{
+                
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u saifhendili -p "girod 131313"'
+                }
+        }
             stage('Building our image') {
             steps {
                 script {
