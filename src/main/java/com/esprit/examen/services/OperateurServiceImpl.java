@@ -2,12 +2,17 @@ package com.esprit.examen.services;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.esprit.examen.entities.Operateur;
 import com.esprit.examen.repositories.OperateurRepository;
 
+
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class OperateurServiceImpl implements IOperateurService {
 
 	@Autowired
@@ -31,14 +36,17 @@ public class OperateurServiceImpl implements IOperateurService {
 
 	@Override
 	public Operateur updateOperateur(Operateur o) {
-		operateurRepository.save(o);
-		return o;
+		 return operateurRepository.save(o);
+	
+		
 	}
 
 	@Override
 	public Operateur retrieveOperateur(Long id) {
-		Operateur operateur = operateurRepository.findById(id).orElse(null);
-		return operateur;
+		
+		Operateur o = operateurRepository.findById(id).orElse(null);
+		log.info("out of method retrieveStock");
+		return o;
 	}
 
 }
